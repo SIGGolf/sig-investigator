@@ -112,18 +112,39 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ className }) => {
     
     if (graphData.nodes.length === 0 && graphData.edges.length === 0) {
       console.log('No graph data available yet');
+      
+      // Test with hardcoded data to see if Cytoscape works at all
+      const testElements = {
+        nodes: [
+          { data: { id: 'test1', label: 'Test Node 1' } },
+          { data: { id: 'test2', label: 'Test Node 2' } }
+        ],
+        edges: [
+          { data: { id: 'test-edge', source: 'test1', target: 'test2', label: 'Test Edge' } }
+        ]
+      };
+      
+      console.log('Adding test elements:', testElements);
+      cyRef.current.elements().remove();
+      cyRef.current.add(testElements);
+      cyRef.current.layout(cyLayout).run();
+      console.log('Test elements added');
       return;
     }
 
-    const elements = createCytoscapeElements(graphData.nodes, graphData.edges);
-    console.log('Cytoscape elements created:', elements);
-    
-    cyRef.current.elements().remove();
-    cyRef.current.add(elements);
-    console.log('Elements added to Cytoscape');
-    
-    cyRef.current.layout(cyLayout).run();
-    console.log('Layout applied');
+    try {
+      const elements = createCytoscapeElements(graphData.nodes, graphData.edges);
+      console.log('Cytoscape elements created:', elements);
+      
+      cyRef.current.elements().remove();
+      cyRef.current.add(elements);
+      console.log('Elements added to Cytoscape');
+      
+      cyRef.current.layout(cyLayout).run();
+      console.log('Layout applied');
+    } catch (error) {
+      console.error('Error creating or adding elements:', error);
+    }
   }, [getGraphData]);
 
   // Highlight selected elements

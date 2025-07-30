@@ -12,10 +12,21 @@ export default function Home() {
   useEffect(() => {
     const loadSeedData = async () => {
       try {
+        console.log('Loading seed data...');
         const response = await fetch('/seed.json');
+        console.log('Seed data response:', response);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
         const seedData: GraphData = await response.json();
+        console.log('Seed data loaded:', seedData);
+        
         setNodes(seedData.nodes);
         setEdges(seedData.edges);
+        
+        console.log('Seed data set in store');
       } catch (error) {
         console.error('Failed to load seed data:', error);
       }
