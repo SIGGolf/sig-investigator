@@ -183,31 +183,31 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ className }) => {
   return (
     <div className={`relative w-full h-full ${className}`}>
       {/* Controls */}
-      <div className="absolute top-4 right-4 z-10 flex gap-2">
+      <div className="graph-controls">
         <button
           onClick={handleZoomIn}
-          className="p-2 bg-white rounded-md shadow-md hover:bg-gray-50"
+          className="control-btn"
           title="Zoom In"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" />
           </svg>
         </button>
         <button
           onClick={handleZoomOut}
-          className="p-2 bg-white rounded-md shadow-md hover:bg-gray-50"
+          className="control-btn"
           title="Zoom Out"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM13 10H7" />
           </svg>
         </button>
         <button
           onClick={handleResetView}
-          className="p-2 bg-white rounded-md shadow-md hover:bg-gray-50"
+          className="control-btn"
           title="Reset View"
         >
-          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-4 h-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
           </svg>
         </button>
@@ -215,15 +215,18 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ className }) => {
 
       {/* Loading indicator */}
       {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 z-20">
-          <div className="text-lg">Loading graph...</div>
+        <div className="absolute inset-0 flex items-center justify-center bg-gray-900 bg-opacity-75 rounded-xl z-20">
+          <div className="text-center">
+            <div className="loading-pulse w-8 h-8 bg-blue-600 rounded-full mx-auto mb-4"></div>
+            <div className="text-lg text-gray-300">Loading graph...</div>
+          </div>
         </div>
       )}
 
       {/* Graph container */}
       <div 
         ref={containerRef} 
-        className="w-full h-full bg-gray-50"
+        className="w-full h-full rounded-xl"
         style={{ minHeight: '600px' }}
       />
     </div>
