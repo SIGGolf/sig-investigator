@@ -65,7 +65,7 @@ export const getEdgeWidth = (amount?: number): number => {
   return 4;
 };
 
-export const cyStyle = [
+export const cyStyle: any = [
   // Node styles
   {
     selector: 'node',
