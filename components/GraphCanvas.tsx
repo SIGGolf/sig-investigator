@@ -132,7 +132,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ className }) => {
         edge.addClass('highlighted');
         const source = edge.source();
         const target = edge.target();
-        cyRef.current.fit([source, target]);
+        cyRef.current.fit(cyRef.current.collection([source, target]));
       }
     }
   }, [selectedNode, selectedEdge]);
