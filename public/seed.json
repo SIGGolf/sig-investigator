@@ -1,0 +1,16 @@
+{
+  "nodes": [
+    {"id":"izzy","label":"Izzy Fox","type":"Person","role":"Victim"},
+    {"id":"jens","label":"Jens Albers","type":"Person","role":"Primary Suspect"},
+    {"id":"albers","label":"Albers Capital","type":"Company","detail":"UK Reg #12345, suspected shell company"},
+    {"id":"walletA","label":"Crypto Wallet A","type":"CryptoWallet","detail":"Received funds from Albers Capital"},
+    {"id":"newNode","label":"(Add New Node Here)","type":"Unknown","detail":"Role or identifier"}
+  ],
+  "edges": [
+    {"id":"e1","source":"izzy","target":"albers","description":"Invested £250,000","certainty":"Confirmed","nature":"Illicit","currency":"GBP","amount":250000},
+    {"id":"e2","source":"jens","target":"albers","description":"Director","certainty":"Confirmed","nature":"Neutral"},
+    {"id":"e3","source":"albers","target":"walletA","description":"Transferred funds","certainty":"Confirmed","nature":"Illicit"},
+    {"id":"e4","source":"jens","target":"walletA","description":"Controls wallet","certainty":"Suspected","nature":"Illicit"},
+    {"id":"e5","source":"newNode","target":"walletA","description":"Describe link","certainty":"Suspected","nature":"Neutral"}
+  ]
+} 

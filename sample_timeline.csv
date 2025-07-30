@@ -1,0 +1,5 @@
+timestamp,granularity,source,context,persons,orgs,emails,phones,wallets,amounts
+2024-01-15T10:30:00Z,minute,text,Initial investment discussion,John Smith;Izzy Fox,Albers Capital,john@albers.com;izzy@email.com,+44 20 1234 5678;+44 20 8765 4321,0x1234567890abcdef,250000
+2024-01-16T14:15:00Z,minute,text,Fund transfer initiated,Izzy Fox,Albers Capital,izzy@email.com,+44 20 8765 4321,0x1234567890abcdef,250000
+2024-01-17T09:45:00Z,minute,text,Company registration confirmed,Jens Albers,Albers Capital,jens@albers.com,+44 20 1111 2222,,0
+2024-01-18T16:20:00Z,minute,text,Crypto wallet transaction,Unknown,Unknown,,,0xabcdef1234567890,50000 

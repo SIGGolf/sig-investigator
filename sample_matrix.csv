@@ -1,0 +1,5 @@
+entity,category,inferred_role,mentions,first_seen,last_seen,related_entities,emails,phones,wallets,claims_snippet,exhibits
+Izzy Fox,Person,Victim,15,2024-01-15T10:30:00Z,2024-01-16T14:15:00Z,Jens Albers;Albers Capital,izzy@email.com,+44 20 8765 4321,0x1234567890abcdef,"Invested £250,000 in suspicious scheme",Exhibit A;Exhibit B
+Jens Albers,Person,Primary Suspect,8,2024-01-17T09:45:00Z,2024-01-18T16:20:00Z,Albers Capital;john@albers.com,+44 20 1111 2222,,"Director of shell company",Exhibit C
+Albers Capital,Organisation,Suspected Shell Company,12,2024-01-15T10:30:00Z,2024-01-18T16:20:00Z,Izzy Fox;Jens Albers,john@albers.com;izzy@email.com,+44 20 1234 5678;+44 20 8765 4321,0x1234567890abcdef,"UK Reg #12345",Exhibit D
+John Smith,Person,Accomplice,3,2024-01-15T10:30:00Z,2024-01-15T10:30:00Z,Albers Capital,john@albers.com,+44 20 1234 5678,,"Facilitated initial contact",Exhibit E 
