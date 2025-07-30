@@ -1,16 +1,146 @@
 {
   "nodes": [
-    {"id":"izzy","label":"Izzy Fox","type":"Person","role":"Victim"},
-    {"id":"jens","label":"Jens Albers","type":"Person","role":"Primary Suspect"},
-    {"id":"albers","label":"Albers Capital","type":"Company","detail":"UK Reg #12345, suspected shell company"},
-    {"id":"walletA","label":"Crypto Wallet A","type":"CryptoWallet","detail":"Received funds from Albers Capital"},
-    {"id":"newNode","label":"(Add New Node Here)","type":"Unknown","detail":"Role or identifier"}
+    {
+      "id": "izzy",
+      "label": "Izzy Fox",
+      "type": "Person",
+      "role": "Victim",
+      "detail": "Primary victim of investment fraud",
+      "tags": ["victim", "investor"],
+      "riskScore": 10,
+      "selectors": {
+        "emails": ["izzy.fox@example.com"],
+        "phones": ["+44 20 1234 5678"],
+        "wallets": []
+      },
+      "createdAt": "2024-01-15T10:00:00Z",
+      "updatedAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "jens",
+      "label": "Jens Albers",
+      "type": "Person",
+      "role": "Primary Suspect",
+      "detail": "Director of Albers Capital, suspected fraudster",
+      "tags": ["suspect", "director"],
+      "riskScore": 85,
+      "selectors": {
+        "emails": ["jens.albers@alberscapital.com"],
+        "phones": ["+44 20 8765 4321"],
+        "wallets": ["0x1234567890abcdef"]
+      },
+      "createdAt": "2024-01-15T10:00:00Z",
+      "updatedAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "albers",
+      "label": "Albers Capital",
+      "type": "Company",
+      "role": "Shell Company",
+      "detail": "UK Reg #12345, suspected shell company",
+      "tags": ["company", "shell", "suspicious"],
+      "riskScore": 75,
+      "selectors": {
+        "emails": ["info@alberscapital.com"],
+        "phones": ["+44 20 5555 1234"],
+        "wallets": []
+      },
+      "createdAt": "2024-01-15T10:00:00Z",
+      "updatedAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "walletA",
+      "label": "Crypto Wallet A",
+      "type": "CryptoWallet",
+      "role": "Destination Wallet",
+      "detail": "Received funds from Albers Capital",
+      "tags": ["wallet", "destination"],
+      "riskScore": 90,
+      "selectors": {
+        "emails": [],
+        "phones": [],
+        "wallets": ["0xabcdef1234567890"]
+      },
+      "createdAt": "2024-01-15T10:00:00Z",
+      "updatedAt": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "newNode",
+      "label": "(Add New Node Here)",
+      "type": "Unknown",
+      "role": "Unknown",
+      "detail": "Role or identifier",
+      "tags": ["placeholder"],
+      "riskScore": 0,
+      "selectors": {
+        "emails": [],
+        "phones": [],
+        "wallets": []
+      },
+      "createdAt": "2024-01-15T10:00:00Z",
+      "updatedAt": "2024-01-15T10:00:00Z"
+    }
   ],
   "edges": [
-    {"id":"e1","source":"izzy","target":"albers","description":"Invested £250,000","certainty":"Confirmed","nature":"Illicit","currency":"GBP","amount":250000},
-    {"id":"e2","source":"jens","target":"albers","description":"Director","certainty":"Confirmed","nature":"Neutral"},
-    {"id":"e3","source":"albers","target":"walletA","description":"Transferred funds","certainty":"Confirmed","nature":"Illicit"},
-    {"id":"e4","source":"jens","target":"walletA","description":"Controls wallet","certainty":"Suspected","nature":"Illicit"},
-    {"id":"e5","source":"newNode","target":"walletA","description":"Describe link","certainty":"Suspected","nature":"Neutral"}
+    {
+      "id": "e1",
+      "source": "izzy",
+      "target": "albers",
+      "description": "Invested £250,000",
+      "certainty": "Confirmed",
+      "nature": "Illicit",
+      "date": "2024-01-10T14:30:00Z",
+      "amount": 250000,
+      "currency": "GBP",
+      "references": ["Bank transfer receipt", "Investment agreement"]
+    },
+    {
+      "id": "e2",
+      "source": "jens",
+      "target": "albers",
+      "description": "Director",
+      "certainty": "Confirmed",
+      "nature": "Neutral",
+      "date": "2023-06-01T09:00:00Z",
+      "amount": null,
+      "currency": null,
+      "references": ["Companies House records"]
+    },
+    {
+      "id": "e3",
+      "source": "albers",
+      "target": "walletA",
+      "description": "Transferred funds",
+      "certainty": "Confirmed",
+      "nature": "Illicit",
+      "date": "2024-01-12T16:45:00Z",
+      "amount": 200000,
+      "currency": "GBP",
+      "references": ["Blockchain transaction", "Bank records"]
+    },
+    {
+      "id": "e4",
+      "source": "jens",
+      "target": "walletA",
+      "description": "Controls wallet",
+      "certainty": "Suspected",
+      "nature": "Illicit",
+      "date": "2024-01-12T16:45:00Z",
+      "amount": null,
+      "currency": null,
+      "references": ["IP analysis", "Transaction patterns"]
+    },
+    {
+      "id": "e5",
+      "source": "newNode",
+      "target": "walletA",
+      "description": "Describe link",
+      "certainty": "Suspected",
+      "nature": "Neutral",
+      "date": null,
+      "amount": null,
+      "currency": null,
+      "references": []
+    }
   ]
 } 

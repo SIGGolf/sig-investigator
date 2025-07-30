@@ -30,6 +30,8 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ className }) => {
   useEffect(() => {
     if (!containerRef.current) return;
 
+    console.log('Initializing Cytoscape...');
+
     // Initialize Cytoscape
     cyRef.current = cytoscape({
       container: containerRef.current,
@@ -44,6 +46,8 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ className }) => {
       boxSelectionEnabled: true,
       selectionType: 'single',
     });
+
+    console.log('Cytoscape initialized');
 
     // Event handlers
     cyRef.current.on('tap', 'node', (evt) => {
@@ -104,11 +108,22 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ className }) => {
     if (!cyRef.current) return;
 
     const graphData = getGraphData();
+    console.log('Graph data received:', graphData);
+    
+    if (graphData.nodes.length === 0 && graphData.edges.length === 0) {
+      console.log('No graph data available yet');
+      return;
+    }
+
     const elements = createCytoscapeElements(graphData.nodes, graphData.edges);
+    console.log('Cytoscape elements created:', elements);
     
     cyRef.current.elements().remove();
     cyRef.current.add(elements);
+    console.log('Elements added to Cytoscape');
+    
     cyRef.current.layout(cyLayout).run();
+    console.log('Layout applied');
   }, [getGraphData]);
 
   // Highlight selected elements
