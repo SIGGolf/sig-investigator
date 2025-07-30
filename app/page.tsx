@@ -1,18 +1,23 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GraphCanvas } from '@/components/GraphCanvas';
 import { useInvestigationStore } from '@/lib/store';
 import { GraphData } from '@/lib/schemas';
 
 export default function Home() {
   const { setNodes, setEdges } = useInvestigationStore();
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   // Load seed data on mount
   useEffect(() => {
     const loadSeedData = async () => {
       try {
+        setIsLoading(true);
+        setError(null);
         console.log('Loading seed data...');
+        
         const response = await fetch('/seed.json');
         console.log('Seed data response:', response);
         
@@ -23,12 +28,19 @@ export default function Home() {
         const seedData: GraphData = await response.json();
         console.log('Seed data loaded:', seedData);
         
+        if (!seedData.nodes || !seedData.edges) {
+          throw new Error('Invalid seed data format');
+        }
+        
         setNodes(seedData.nodes);
         setEdges(seedData.edges);
         
         console.log('Seed data set in store');
+        setIsLoading(false);
       } catch (error) {
         console.error('Failed to load seed data:', error);
+        setError(error instanceof Error ? error.message : 'Failed to load data');
+        setIsLoading(false);
       }
     };
 
@@ -69,7 +81,17 @@ export default function Home() {
               Investigation Network Graph
             </h2>
             <div className="h-96">
-              <GraphCanvas />
+              {isLoading && (
+                <div className="flex items-center justify-center h-full">
+                  <div className="text-lg text-gray-600">Loading investigation data...</div>
+                </div>
+              )}
+              {error && (
+                <div className="flex items-center justify-center h-full">
+                  <div className="text-lg text-red-600">Error: {error}</div>
+                </div>
+              )}
+              {!isLoading && !error && <GraphCanvas />}
             </div>
           </div>
         </div>

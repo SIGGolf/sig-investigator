@@ -111,24 +111,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ className }) => {
     console.log('Graph data received:', graphData);
     
     if (graphData.nodes.length === 0 && graphData.edges.length === 0) {
-      console.log('No graph data available yet');
-      
-      // Test with hardcoded data to see if Cytoscape works at all
-      const testElements = {
-        nodes: [
-          { data: { id: 'test1', label: 'Test Node 1' } },
-          { data: { id: 'test2', label: 'Test Node 2' } }
-        ],
-        edges: [
-          { data: { id: 'test-edge', source: 'test1', target: 'test2', label: 'Test Edge' } }
-        ]
-      };
-      
-      console.log('Adding test elements:', testElements);
-      cyRef.current.elements().remove();
-      cyRef.current.add(testElements);
-      cyRef.current.layout(cyLayout).run();
-      console.log('Test elements added');
+      console.log('No graph data available yet - waiting for seed data to load');
       return;
     }
 

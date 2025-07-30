@@ -72,17 +72,21 @@ export const cyStyle: any = [
     style: {
       'background-color': 'data(color)',
       'border-color': 'data(borderColor)',
-      'border-width': 1,
+      'border-width': 2,
       'shape': 'data(shape)',
-      'width': 80,
-      'height': 60,
+      'width': 120,
+      'height': 80,
       'label': 'data(label)',
       'text-wrap': 'wrap',
-      'text-max-width': 70,
-      'font-size': 10,
+      'text-max-width': 100,
+      'font-size': 12,
+      'font-weight': 'bold',
       'text-valign': 'center',
       'text-halign': 'center',
-      'color': '#333',
+      'color': '#2d3748',
+      'text-outline-color': '#ffffff',
+      'text-outline-width': 2,
+      'text-outline-opacity': 0.8,
     }
   },
   
@@ -94,13 +98,20 @@ export const cyStyle: any = [
       'line-color': 'data(color)',
       'target-arrow-color': 'data(color)',
       'target-arrow-shape': 'triangle',
+      'target-arrow-width': 8,
       'curve-style': 'bezier',
       'line-style': 'data(style)',
       'label': 'data(label)',
-      'font-size': 8,
+      'font-size': 10,
+      'font-weight': 'bold',
       'text-rotation': 'autorotate',
-      'text-margin-y': -10,
+      'text-margin-y': -15,
       'color': 'data(color)',
+      'text-outline-color': '#ffffff',
+      'text-outline-width': 2,
+      'text-outline-opacity': 0.8,
+      'loop-direction': '-45deg',
+      'loop-sweep': '-90deg',
     }
   },
   
@@ -108,16 +119,19 @@ export const cyStyle: any = [
   {
     selector: 'node:selected',
     style: {
-      'border-width': 3,
-      'border-color': '#007bff',
+      'border-width': 4,
+      'border-color': '#3182ce',
+      'background-color': 'data(color)',
+      'z-index': 999,
     }
   },
   {
     selector: 'edge:selected',
     style: {
       'width': 'data(width)',
-      'line-color': '#007bff',
-      'target-arrow-color': '#007bff',
+      'line-color': '#3182ce',
+      'target-arrow-color': '#3182ce',
+      'z-index': 999,
     }
   },
   
@@ -125,16 +139,39 @@ export const cyStyle: any = [
   {
     selector: 'node:hover',
     style: {
-      'border-width': 2,
-      'border-color': '#007bff',
+      'border-width': 3,
+      'border-color': '#3182ce',
+      'background-color': 'data(color)',
+      'z-index': 998,
     }
   },
   {
     selector: 'edge:hover',
     style: {
       'width': 'data(width)',
-      'line-color': '#007bff',
-      'target-arrow-color': '#007bff',
+      'line-color': '#3182ce',
+      'target-arrow-color': '#3182ce',
+      'z-index': 998,
+    }
+  },
+  
+  // Highlighted elements (for programmatic selection)
+  {
+    selector: 'node.highlighted',
+    style: {
+      'border-width': 4,
+      'border-color': '#e53e3e',
+      'background-color': 'data(color)',
+      'z-index': 997,
+    }
+  },
+  {
+    selector: 'edge.highlighted',
+    style: {
+      'width': 'data(width)',
+      'line-color': '#e53e3e',
+      'target-arrow-color': '#e53e3e',
+      'z-index': 997,
     }
   }
 ];
