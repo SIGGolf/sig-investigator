@@ -122,7 +122,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ className }) => {
       const node = cyRef.current.getElementById(selectedNode.id);
       if (node.length > 0) {
         node.addClass('highlighted');
-        cyRef.current.fit(node, { padding: 50 });
+        cyRef.current.fit(node);
       }
     }
 
@@ -132,7 +132,7 @@ export const GraphCanvas: React.FC<GraphCanvasProps> = ({ className }) => {
         edge.addClass('highlighted');
         const source = edge.source();
         const target = edge.target();
-        cyRef.current.fit([source, target], { padding: 50 });
+        cyRef.current.fit([source, target]);
       }
     }
   }, [selectedNode, selectedEdge]);
